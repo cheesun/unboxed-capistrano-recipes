@@ -20,6 +20,12 @@ Or install it yourself as:
 
     $ gem install unboxed-capistrano-recipes
 
+Allow Capistrano to load recipes via Rubygems. Add the following to the top of your `Capfile`:
+
+```ruby
+require 'rubygems'
+```
+
 Load the recipes from the gem by adding the require statement in `deploy.rb`:
 
 ```ruby
