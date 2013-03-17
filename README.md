@@ -26,19 +26,30 @@ Allow Capistrano to load recipes via Rubygems. Add the following to the top of y
 require 'rubygems'
 ```
 
-Load the recipes from the gem by adding the require statement in `deploy.rb`:
+# Usage
+
+This gem provides some base recipes that are automatically loaded when Capistrano initialises. Other recipes and tasks will have to be loaded explicitly in order to avoid recipe conflicts and to keep `deploy.rb` readable and explicit.
+
+### Base recipes
+
+Load the base recipes from the gem by adding the require statement in `deploy.rb`:
 
 ```ruby
 require 'unboxed/capistrano/recipes'
 ```
 
-## Usage
+The following tasks will be loaded:
 
-This gem provides a set of Capistrano recipes:
+| Task            | Description                                |
+| --------------- | ------------------------------------------ |
+| deploy:revision | Show currently deployed revision on server |
+
+### Passenger deployment
+
+In order to deploy via [Passenger](http://www.phusionpassenger.com/) (mod_rails) you will have to load the tasks explicity in `deploy.rb`:
 
 ```ruby
-# Show currently deployed revision on server
-cap deploy:revision
+require 'unboxed/capistrano/recipes/deploy/passenger'
 ```
 
 ## Contributing
